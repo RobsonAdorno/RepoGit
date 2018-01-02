@@ -1,1 +1,2 @@
-Testando novo arquivo no novo repositorio local
+Testando novo arquivo no novo repositorio loca
+Manipulando cherry pick
