@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Testando novo arquivo no novo repositorio local
 Adicionando nova linha para testes
 Aqui é o lugar do conflito!!!!
