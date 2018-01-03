@@ -1,0 +1,9 @@
+<<<<<<< HEAD
+Testando novo arquivo no novo repositorio local
+Adicionando nova linha para testes
+Aqui é o lugar do conflito!!!!
+=======
+Testando novo arquivo no novo repositorio loca
+Manipulando cherry pick
+Gerando um conflito no merge
+>>>>>>> master
