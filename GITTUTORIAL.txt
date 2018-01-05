@@ -1,0 +1,198 @@
+git config --global user.name "Robson Adorno"
+
+git config --global user.email "bla@hotmail.com"
+
+git config --global core.editor atom <- Deixa de usar o vim para usar o editor atom. 
+
+git config --global credential.helper cache -> Senha sera cacheada, não precisara digitar mais a senha.
+
+git config --global -e -> Abre as configurações e você podera mudar o editor na mão. Sempre bom deixar como: editor = atom --wait, para que vc possa commitar com uma mensagem maior. 
+
+git config --global --unset <nomeDaOpção> -> Para remover alguma configuração global.
+
+git config --global credential.helper 'cache --timeout=3600' -> A cada uma hora a senha expira.
+
+Untracked -> Arquivo não reconhecido pelo git, em vermelho.
+
+Unmodified -> Depois de add para o repositório. Sem modificação, em verde. Pronto para ser commitado, na staged area.
+
+Modified -> Arquivo modificado dentro do repositório. Em amarelo. 
+Staged -> Arquivo pronto para ser commitado. 
+------------------------------------------------------------
+git init -> Para criar um repositÃ³rio vazio, repositÃ³rio local. 
+
+tree .git -> Apresenta a Ã¡rvore usada pelo git dentro do repositÃ³rio.
+-------------------------------------------------------------
+git add -> inserindo o projeto dentro de um container/stage area.
+
+git status -> verificando o que hÃ¡ dentro da stage area. 
+
+git add -a ou --all -> adicionar todos os arquivos dentro da stage area.
+
+blob -> Ã© o objeto que o git usa para armazenar os projetos, quando roda o "git log" apresenta uma hash, essa rash Ã© o blob. 
+
+git add -i -> Modo interativo, serve para ter um acompanhamento das modificações dos arquivos.
+-------------------------------------------------------------
+git commit -a -m "comentario"
+
+git commit -m "a.txt e s.txt" -> aqui Ã© commitar dois projetos ao mesmo tempo. 
+
+git commit -m "Mensagem" --amend -> Para commitar no commit atual. Use o amend só se você não fez o push para o rep principal.
+-------------------------------------------------------------
+git log -> verifica o que jÃ¡ foi commitado dentro de uma branch atÃ© entÃ£o. 
+
+git log --oneline -> tras o log com menos lixo visual. 
+
+git log --author="Robson" -> Vai trazer todas as auterações feita pelo autor. 
+
+git log --pretty=oneline -> Deixa tudo bonitinho, apenas com a mensagem de log em cada linha.
+
+git log --abbrevi-commit -> Abrevia o commit, a hash. 
+
+git log --stat -> Abre estastitica dos commits. 
+
+git log -p -> Visualização de mudanças em cada commit.
+
+git log -p -3 -> Vendo o log dos 3 ultimos commits. 
+
+git log --oneline --decorate -> aqui vocÃª consegue listar as branchs. 
+
+git log --oneline --decorate --all -> vocÃª ira visualizar as branchs pai. 
+
+git log --pretty=format:"%h - %an, %ar : %s"
+
+%H - Hash do commit
+
+%h - Hash abreviada
+
+%T - Arvore do hash
+
+%t - Hash abreviada
+
+%P - Hash pai, parent
+
+%p - Hash pai abreviada
+
+%s - Titulo dos commites
+
+%an - Nome do Autor
+
+%ae - Email do Autor
+
+%ad - Data
+
+%cn - Nome do autor do commit
+
+%ce - Email do commiteiro
+
+%cd - Data do commit
+
+%cr - Data relativa (Ex: 2 horas atras)
+
+git whatchanged -p -> Visualiza detalhes dos commits, inclusive o que foi mudado.
+--------------------------------------------------------------
+git shortlog -> Mostra em ordem alfabetica os autores e as suas mudanças. 
+
+git shortlog -sn -> Apenas a quantidade dos commits e dos autores.
+--------------------------------------------------------------
+git branch -> criando uma branch. 
+
+git branch "feature1" -> aqui criamos uma branch com o nome "feature1", jÃ¡ que por default ela Ã© criada como master. 
+
+git branch -d feature1 -> deleta a branch que vc acabou de trabalhar.
+
+git branch -m "NovoNome" -> Renomeia a branch atual
+
+git branch -t "nomebranch" origin/nomebranch -> Já cria uma branch local e remota ao mesmo tempo. 
+
+git branch -a -> Lista todas as branchs remotas e locais.
+--------------------------------------------------------------
+
+head -> o head diz em que branch vocÃª estÃ¡ trabalhando no momento. 
+
+git checkout feature1 -> escolhe a branch "feature1" para vocÃª trabalhar. 
+
+git checkout -b feature1 -> para criar e comeÃ§ar a trabalhar na sua branch.
+
+git checkout arquivo.html -> Para voltar as alterações dos fonts.
+
+git checkout "rash do commit" -> Para voltar nesse commit
+
+git checkout -t origin/design -> Cria essa branch te da acesso a ela e ainda cria um link com o repositrio remoto. 
+--------------------------------------------------------------
+
+git merge feature1 -> merge significa trabalhar dentro de uma branch que Ã© sua, nÃ£o havendo a necessidade de se trabalhar na master.
+
+git merge --abort -> Tentar abortar o merge, caso dê erros de conflito. 
+--------------------------------------------------------------
+stash -> area onde vc armazena seus código sem precisar mudar de branch. 
+
+git stash list -> você tras tudo que está no stash.
+
+git stash apply stash@{0} -> usado para trazer arquivos a stage area.
+
+git stash drop stash@{0} -> Remove esse cara do stage area.
+
+git stash save "h.txt" -> criando um arquivo para o stash.
+
+git stash pop -> faz o drop da referencia do stash. 
+--------------------------------------------------------------
+git push -u origin master -> Você cria uma branch master e envia todas as alterações e conteudo da branch master local para o remoto. 
+
+git remote add origin https://github.com/RobsonAdorno -> criando o diretório remoto
+
+git remote set-url <origin> <url> -> Para realizar a mudança de url
+--------------------------------------------------------------
+git diff -> Usado para ver as mudanças nos arquivos, quando eles estiverem na working area. (Faz o comparativo entre work area e stage area).  
+
+git diff --staged -> Usado para fazer a comparação das mudanças de arquivos na stage area e .git commit.
+
+git diff <commit1 commit2>
+
+git diff -w -> Para ignorar os espaçamentos nos códigos.
+--------------------------------------------------------------
+git reset --soft --mixed --hard
+
+--soft -> Mata o commit e deixa ele na stage area pronto para ser commitado. 
+
+--mixed -> Também mata o commit e ele vai voltar os arquivos antes do stage. 
+
+--hard -> Vai matar todos os arquivos anterior ao commit.
+
+git rm -rf nodemodules/ --cache
+--------------------------------------------------------------
+Para resolver um conflito de auto-merge, podemos usar a ferramenta "Merge Tool"
+
+git config --global merge.tool meld
+
+--------------------------------------------------------------
+git commit -m "Fechando a issue - fix #2" (Esse #2 é o numero da issue) ou
+git commit -m "Fechando uma issue - resolve #2"
+--------------------------------------------------------------
+git push origin <nomeDaBranch> --delete -> Para remover remotamente.
+
+git branch -D <nomeDaBranch> -> Para remover local.
+
+git push -d origin master/git push origin :master -> deletando a branch master remota.
+
+--------------------------------------------------------------
+git fetch -> Serve para verificar alterações entre dois repositorios diferentes que estão usando branchs iguais.
+--------------------------------------------------------------
+git blame -> Serve para trazer as modificações dos arquivos.
+--------------------------------------------------------------
+git rebase master DevOps -> Para manter a master e a DevOps atualizada.
+
+git rebase --continue -> Para continuar a atualização das branchs, caso haja algum conflito durante o processo.
+--------------------------------------------------------------
+git reset HEAD <nomeDaBranch> -> Aqui serve para excluirmos arquivos pronto para commit, arquivos que estejam na steage area.
+
+git reset <hash do commit> -> Para voltar no commit e alterar ou remover o commit.
+--------------------------------------------------------------
+git revert <hash do commit> -> Para mnodificar commits antigos
+--------------------------------------------------------------
+
+vim ~/.gitconfig -> Para colocar alias nos commando, um apelido para resumir os comandos do git.
+--------------------------------------------------------------
+git cherry-pick <hash do commit> -> Para commitar apenas uma alteração para a master
+
+
